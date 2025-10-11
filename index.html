@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreePlanter - Plant Trees, Earn Rewards</title>
+      <link rel="stylesheet" href="styles.css">
+       <link rel ="script" href="script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tree"></i>
+                    <span>TreePlanter</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#points">Points System</a></li>
+                        <li><a href="#leaderboard">Leaderboard</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="signin-btn">Sign In</button>
+                    <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Plant Trees, Earn Rewards</h1>
+            <p>Join our community of eco-warriors and make a positive impact on the environment. For every 100 trees you plant, you earn 10 points and climb the leaderboard!</p>
+            <button class="btn btn-primary">Get Started Today</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Join our mission to make the planet greener, one tree at a time</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Create Account</h3>
+                    <p>Sign up for free and become part of our tree planting community</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Plant Trees</h3>
+                    <p>Plant trees in your community or join our organized planting events</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Earn Points</h3>
+                    <p>Get 10 points for every 100 trees planted and track your progress</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Win Rewards</h3>
+                    <p>Climb the leaderboard and earn recognition and eco-friendly prizes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Points System Section -->
+    <section class="points-system" id="points">
+        <div class="container">
+            <div class="points-content">
+                <div class="points-visual">
+                    <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Person planting a tree">
+                </div>
+                <div class="points-info">
+                    <h2>Our Points System</h2>
+                    <p>We believe every tree counts in our fight against climate change. That's why we reward your efforts with our points system.</p>
+                    <p>For every 100 trees you plant and verify through our platform, you earn 10 points. The more trees you plant, the higher you climb on our leaderboard!</p>
+                    <div class="points-calculation">
+                        <h3>Points Calculation</h3>
+                        <p><strong>100 trees planted = 10 points</strong></p>
+                        <p>Example: If you plant 350 trees, you earn 35 points</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Tree Planters</h2>
+                <p>See who's leading the way in our mission to green the planet</p>
+            </div>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th class="rank">Rank</th>
+                        <th>Planter</th>
+                        <th>Trees Planted</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank rank-1">1</td>
+                        <td>EcoWarrior42</td>
+                        <td>2,450</td>
+                        <td>245</td>
+                    </tr>
+                    <tr>
+                        <td class="rank rank-2">2</td>
+                        <td>GreenThumb99</td>
+                        <td>1,890</td>
+                        <td>189</td>
+                    </tr>
+                    <tr>
+                        <td class="rank rank-3">3</td>
+                        <td>ForestFriend</td>
+                        <td>1,720</td>
+                        <td>172</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">4</td>
+                        <td>NatureLover</td>
+                        <td>1,550</td>
+                        <td>155</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">5</td>
+                        <td>TreeHugger</td>
+                        <td>1,430</td>
+                        <td>143</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">6</td>
+                        <td>PlanetSaver</td>
+                        <td>1,210</td>
+                        <td>121</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">7</td>
+                        <td>EcoExplorer</td>
+                        <td>980</td>
+                        <td>98</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">8</td>
+                        <td>GreenGiant</td>
+                        <td>850</td>
+                        <td>85</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">9</td>
+                        <td>EarthGuardian</td>
+                        <td>720</td>
+                        <td>72</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">10</td>
+                        <td>BioDiversity</td>
+                        <td>650</td>
+                        <td>65</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign In</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="signin-form">
+                    <div class="form-group">
+                        <label for="signin-email">Email</label>
+                        <input type="email" id="signin-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signin-password">Password</label>
+                        <input type="password" id="signin-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" id="switch-to-signin">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TreePlanter</h3>
+                    <p>Join our mission to make the planet greener, one tree at a time. Together we can combat climate change and create a sustainable future.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#points">Points System</a></li>
+                        <li><a href="#leaderboard">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@treeplanter.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Green Street, Eco City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TreePlanter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>
