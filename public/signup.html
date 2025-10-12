@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ReMiti — Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3faf1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      padding: 28px 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c9a4a;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      background: #2c9a4a;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #24803c;
+    }
+    .msg {
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .msg.error { color: #b00020; }
+    .msg.ok { color: #0b6d2b; }
+    p {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    a {
+      color: #2c9a4a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title"><i class="fas fa-seedling"></i> Create ReMiti Account</h1>
+
+    <div id="msg" class="msg" aria-live="polite"></div>
+
+    <form id="signup-form" autocomplete="on">
+      <label for="name">Full name</label>
+      <input id="name" type="text" required minlength="2" placeholder="Jane Doe">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" required minlength="8" placeholder="At least 8 characters">
+
+      <label for="confirm">Confirm password</label>
+      <input id="confirm" type="password" required minlength="8" placeholder="Repeat password">
+
+      <button type="submit" class="btn">Create Account</button>
+    </form>
+
+    <p>Already have an account? <a href="signin.html">Sign in</a></p>
+    <p><a href="index.html">&larr; Back to ReMiti</a></p>
+  </main>
+
+  <script>
+    const API_BASE = 'https://your-backend-domain.com/api/auth'; // replace with your deployed backend URL
+    const form = document.getElementById('signup-form');
+    const msg = document.getElementById('msg');
+
+    function showMsg(text, type='error') {
+      msg.textContent = text;
+      msg.className = 'msg ' + (type==='ok' ? 'ok' : 'error');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      if (!name || !email || !password || !confirm) return showMsg('Please fill all fields');
+      if (password !== confirm) return showMsg('Passwords do not match');
+      if (password.length < 8) return showMsg('Password must be at least 8 characters');
+
+      try {
+        const res = await fetch(API_BASE + '/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password })
+        });
+        const payload = await res.json();
+        if (!res.ok) return showMsg(payload.message || 'Sign up failed');
+
+        // Store token and redirect if returned
+        if (payload.token) {
+          localStorage.setItem('token', payload.token);
+          localStorage.setItem('name', payload.user?.name || name);
+          showMsg('Account created! Redirecting...', 'ok');
+          setTimeout(() => window.location.href = 'profile.html', 500);
+        } else {
+          showMsg('Account created! Redirecting to sign-in...', 'ok');
+          setTimeout(() => window.location.href = 'signin.html', 500);
+        }
+      } catch (err) {
+        console.error(err);
+        showMsg('Network error during sign up');
+      }
+    });
+  </script>
+</body>
+</html>

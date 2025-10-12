@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ReMiti — Sign In</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3faf1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: 28px 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c9a4a;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      background: #2c9a4a;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #24803c;
+    }
+    .msg {
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .msg.error { color: #b00020; }
+    .msg.ok { color: #0b6d2b; }
+    p {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    a {
+      color: #2c9a4a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title"><i class="fas fa-leaf"></i> Sign in to ReMiti</h1>
+
+    <div id="msg" class="msg" aria-live="polite"></div>
+
+    <form id="signin-form" autocomplete="on">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required placeholder="Enter password">
+
+      <button type="submit" class="btn">Sign In</button>
+    </form>
+
+    <p>No account? <a href="signup.html">Create one</a></p>
+    <p><a href="index.html">&larr; Back to ReMiti</a></p>
+  </main>
+
+  <script>
+    // For production, replace with deployed backend URL
+    const API_BASE = 'https://your-backend-domain.com/api/auth'; 
+    const form = document.getElementById('signin-form');
+    const msg = document.getElementById('msg');
+
+    function showMsg(text, type='error') {
+      msg.textContent = text;
+      msg.className = 'msg ' + (type === 'ok' ? 'ok' : 'error');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        return showMsg('Please fill in all fields');
+      }
+
+      try {
+        const res = await fetch(API_BASE + '/signin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const payload = await res.json();
+
+        if (!res.ok) return showMsg(payload.message || 'Sign in failed');
+
+        // Save token & optional name
+        localStorage.setItem('token', payload.token);
+        if (payload.user && payload.user.name) localStorage.setItem('name', payload.user.name);
+
+        showMsg('Sign in successful!', 'ok');
+        setTimeout(() => window.location.href = 'profile.html', 500);
+      } catch (err) {
+        console.error(err);
+        showMsg('Network error during sign in');
+      }
+    });
+  </script>
+</body>
+</html>
