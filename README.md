@@ -22,7 +22,7 @@ Every 100 trees = 10 points 🌳💚
 |-------|-------------|
 | **Frontend** | HTML, CSS, JavaScript |
 | **Backend** | Node.js with Express |
-| **Database** | PostgreSQL (via CockroachDB) |
+| **Database** | PostgreSQL           |
 | **Hosting** | Render |
 
 Project Live Link:
