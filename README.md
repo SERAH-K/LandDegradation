@@ -25,6 +25,10 @@ Every 100 trees = 10 points 🌳💚
 | **Database** | PostgreSQL (via CockroachDB) |
 | **Hosting** | Render |
 
+
+Project Live Link:
+https://landdegradation.onrender.com/
+
 ---
 
 ## ⚙️ Local Setup Guide
@@ -95,8 +99,6 @@ Example:
 
 This motivates consistency and measurable impact 🌎
 
-Project Live Link:
-https://landdegradation.onrender.com/
 
 
 
