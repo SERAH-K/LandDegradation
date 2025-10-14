@@ -95,6 +95,9 @@ Example:
 
 This motivates consistency and measurable impact 🌎
 
+Project Live Link:
+https://landdegradation.onrender.com/
+
 
 
 ## 👥 Collaborators
